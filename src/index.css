@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Manrope", "Inter", "Noto Sans Arabic", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", "Noto Sans Arabic", system-ui, -apple-system, sans-serif;
+
+  --color-clinical-canvas: #f7f9fb;
+  --color-clinical-surface: #ffffff;
+  --color-clinical-border: #dce4ec;
+  --color-clinical-ink: #0f172a;
+  --color-clinical-muted: #475569;
+  --color-clinical-teal: #0f766e;
+  --color-clinical-teal-hover: #115e59;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-clinical-canvas);
+    color: var(--color-clinical-ink);
+    scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-xl border border-slate-200/90 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.03)];
+  }
+
+  .btn-primary {
+    @apply inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg bg-teal-700 px-4 py-2.5 text-sm font-semibold text-white whitespace-nowrap transition-colors hover:bg-teal-800 active:bg-teal-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 whitespace-nowrap transition-colors hover:border-slate-400 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .field-input {
+    @apply min-h-[42px] w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:border-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-700/20 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500;
+  }
+
+  .field-input-error {
+    @apply min-h-[42px] w-full rounded-lg border border-red-400 bg-white px-3.5 py-2 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-200 disabled:cursor-not-allowed disabled:bg-slate-50;
+  }
+
+  .toast-enter {
+    animation: toast-in 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .toast-exit {
+    animation: toast-out 220ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+
+  .animate-cart-badge {
+    animation: badge-pop 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-check-pop {
+    animation: check-pop 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -6px, 0) scale(0.98);
+  }
+}
+
+@keyframes badge-pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes check-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
