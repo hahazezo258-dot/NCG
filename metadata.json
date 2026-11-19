@@ -2,5 +2,7 @@
   "name": "Medical E-Commerce – Multi-Tier Bundle Pricing",
   "description": "Clinical medical supplies storefront with multi-tier bundle pricing in KWD, shopping cart, and Supabase-backed admin catalog management.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
