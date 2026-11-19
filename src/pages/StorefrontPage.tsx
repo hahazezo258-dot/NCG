@@ -69,7 +69,7 @@ export function StorefrontPage() {
           <div className="lg:col-span-6">
             <div className="h-full overflow-hidden rounded-xl border border-slate-200/90 bg-slate-100 shadow-xs">
               <img
-                src="/src/assets/images/hero_medical_supplies_1795061372913.jpg"
+                src={`${import.meta.env.BASE_URL}src/assets/images/hero_medical_supplies_1795061372913.jpg`}
                 alt="Sterile medical gloves, digital thermometer, gauze packs, and diagnostic equipment arranged on a clean clinical counter"
                 referrerPolicy="no-referrer"
                 className="h-full w-full object-cover aspect-[4/3] lg:max-h-[340px]"

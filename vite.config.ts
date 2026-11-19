@@ -4,8 +4,18 @@ import fs from 'fs';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+function normalizeBasePath(raw?: string): string {
+  const trimmed = (raw ?? '/').trim();
+  if (!trimmed || trimmed === '/') {
+    return '/';
+  }
+  const stripped = trimmed.replace(/^\/+|\/+$/g, '');
+  return stripped ? `/${stripped}/` : '/';
+}
+
 export default defineConfig(() => {
   return {
+    base: normalizeBasePath(process.env.VITE_BASE_PATH),
     plugins: [
       react(),
       tailwindcss(),

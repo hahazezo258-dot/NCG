@@ -19,9 +19,25 @@ function ScrollToTop() {
   return null;
 }
 
+function resolveRouterBasename(): string | undefined {
+  const rawBase = import.meta.env.BASE_URL;
+  if (!rawBase || rawBase === '/' || rawBase === './') {
+    return undefined;
+  }
+  const normalized = `/${rawBase.replace(/^\/+|\/+$/g, '')}`;
+  if (typeof window === 'undefined') {
+    return normalized;
+  }
+  const pathname = window.location.pathname;
+  if (pathname.toLowerCase().startsWith(normalized.toLowerCase())) {
+    return pathname.slice(0, normalized.length);
+  }
+  return undefined;
+}
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={resolveRouterBasename()}>
       <ScrollToTop />
       <MainLayout>
         <Routes>
